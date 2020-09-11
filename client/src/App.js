@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import { Switch, Route } from "react-router-dom"
+
+import "./App.css"
+
+import Layout from "./layouts/Layout"
+import Login from "./screens/Login"
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const loginSubmit = () => {}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Layout>
+      <Switch>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/register"></Route>
+        <Route exact path="/"></Route>
+      </Switch>
+    </Layout>
+  )
 }
 
-export default App;
+export default App
