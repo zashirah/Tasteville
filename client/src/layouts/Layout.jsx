@@ -1,13 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
 
-const Layout = (props) => {
+const Layout = ({ children, currentUser, handleLogout }) => {
   return (
     <>
-      <Header />
-      <main>
-        {props.children}
-      </main>
+      <Header currentUser={currentUser} handleLogout={handleLogout} />
+      <main>{children}</main>
     </>
   )
 }
