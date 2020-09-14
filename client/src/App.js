@@ -44,16 +44,15 @@ function App() {
   return (
     <Layout currentUser={currentUser} handleLogout={handleLogout}>
       <Switch>
-        <Route exact path="/login">
+        <Route  path="/login">
           <Login loginSubmit={loginSubmit} />
         </Route>
-        <Route exact path="/register">
+        <Route  path="/register">
           <Register registerSubmit={registerSubmit} />
         </Route>
-        <Route exact path="/"/>
-        <Route exact path="/flavors" component={MainContainer} />
-        <Route exact path="/foods" component={MainContainer} />
-        <Route exact path="/foods/:id/edit" component={MainContainer} />
+        <Route path="/">
+          <MainContainer currentUser={currentUser} />
+        </Route>
       </Switch>
     </Layout>
   )
