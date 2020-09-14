@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { updateFood } from '../services/foods'
 
-const FoodEdit = ({ foods }) => {
+const FoodEdit = ({ foods, updateSubmit }) => {
   const { id } = useParams()
 
   const [formData, setFormData] = useState({
     name: ''
   })
   const { name } = formData
-
-  const handleChange = (e) => {
-    const { value } = e.target
-    setFormData({ name: value })
-  }
 
   useEffect(() => {
     const prefillForm = () => {
@@ -22,14 +18,18 @@ const FoodEdit = ({ foods }) => {
     foods.length > 0 && prefillForm()
   }, [foods])
 
+  const handleChange = (e) => {
+    const { value } = e.target
+    setFormData({ name: value })
+  }
+
   return (
-    <form>
-      <input
-        type='text'
-        name='name'
-        value={name}
-        onChange={handleChange}
-      />
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      updateSubmit(id, formData)
+    }}>
+      <label htmlFor="name">Name:</label>
+      <input type="text" name="name" value={name} onChange={handleChange} />
       <button>Submit</button>
     </form>
   )
