@@ -5,6 +5,7 @@ import Flavors from '../screens/Flavors'
 import { getAllFlavors } from '../services/flavors'
 import Foods from "../screens/Foods"
 import { getAllFoods } from "../services/foods"
+import FoodEdit from "../screens/FoodEdit"
 
 const MainContainer = () => {
   const [flavors, setFlavors] = useState([])
@@ -25,6 +26,9 @@ const MainContainer = () => {
 
   return (
     <Switch>
+      <Route path="/foods/:id/edit">
+        <FoodEdit foods={foods}/>
+      </Route>
       <Route path="/flavors">
         <Flavors flavors={flavors} />
       </Route>

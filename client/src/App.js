@@ -19,7 +19,7 @@ function App() {
       setCurrentUser(userData)
     }
     handleVerify()
-    history.push("/")
+    // history.push("/")
   }, [])
 
   const loginSubmit = async (loginData) => {
@@ -50,9 +50,10 @@ function App() {
         <Route exact path="/register">
           <Register registerSubmit={registerSubmit} />
         </Route>
-        <Route exact path="/" />
+        <Route exact path="/"/>
         <Route exact path="/flavors" component={MainContainer} />
         <Route exact path="/foods" component={MainContainer} />
+        <Route exact path="/foods/:id/edit" component={MainContainer} />
       </Switch>
     </Layout>
   )
